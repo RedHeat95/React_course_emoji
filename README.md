@@ -1,1 +1,1 @@
-# React_course_emoji
+# Шундрик Александр
