@@ -1,29 +1,22 @@
-import { ChangeEvent, KeyboardEvent } from "react";
+import { ChangeEvent } from "react";
 import styles from "./Form.module.css";
 import { Input } from "../Input/Input";
 
 interface IProps {
-    text: string;
-    setText: (value: string) => void;
-    addNewTodoKey: () => void;
+    search: string;
+    setSearch: (value: string) => void;
 }
 
-export const Form = ({ text, setText, addNewTodoKey }: IProps) => {
+export const Form = ({ search, setSearch }: IProps) => {
     
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setText(e.target.value);
+        setSearch(e.target.value);
     }  
-
-    // const addTodoKey = (e: KeyboardEvent<HTMLInputElement>) => {
-    //     if(e.key === "Enter") {
-    //         addNewTodoKey();
-    //     }
-    // }
 
     return (
         <div className={styles.form}>
             <Input
-                value={text}
+                value={search}
                 onChange={onChange}
                               
             />

@@ -5,7 +5,6 @@ interface IProps {
     symbol: string;
 }
 
-
 export function EmojiRow({ title, symbol }: IProps) {
     return (
         <div className={styles.emojiItem}>

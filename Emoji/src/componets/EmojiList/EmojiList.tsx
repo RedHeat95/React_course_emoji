@@ -4,59 +4,41 @@ import { emojies } from "../Emojies/Emojies";
 import { EmojiRow } from "../EmojiItem/EmojiItem";
 import { Form } from "../Form/Form";
 
-// interface IEmojies {
-//   title: string
-//   symbol: string;
-//   keywords: string;
-// }
-
 export const EmojiContainer = () => {
-  const [text, setText] = useState<string>("");
+  const [search, setSearch] = useState("");
 
-  const [emojiesArr, setEmojiesArr] = useState(emojies);
+  const newEmojies = emojies.filter((emojies) => {
+    if (emojies.title.toLowerCase().includes(search.toLowerCase())) {
+      return (
+        <EmojiRow
+          title={emojies.title}
+          symbol={emojies.symbol}
+        />
+      );    
+    } else if (emojies.keywords.toLowerCase().includes(search.toLowerCase())) {
+      return (
+        <EmojiRow
+          title={emojies.title}
+          symbol={emojies.symbol}
+        />
+      );
+    }
+  })
 
-  const addNewTodoKey = () => {
-
-  // const resultArr = emojiesArr.reduce((prev: any, curr: any) => {
-
-  //   if (curr.includes(text)) {
-  //     return prev;
-  //   }
-  // }, []);
-
-  // setEmojiesArr(resultArr)  
-
-    // {emojiesArr.filter((emoji) => {
-    //   if (text === emoji.title) {        
-    //       return (
-    //         <EmojiRow
-    //           title={emoji.title}
-    //           symbol={emoji.symbol}
-    //         />            
-    //       );
-        
-      
-    //   } else if (text === emoji.keywords) {
-    //     alert("Тоже")
-    //   } 
-    // })}
-  }
   return (
     <div className={styles.emojiList}>
       <h1>Emoji</h1>
       <Form
-        text={text} 
-        setText={setText}
-        addNewTodoKey={addNewTodoKey}
+        search={search} 
+        setSearch={setSearch}
       />
-      {emojiesArr.map((emoji) => {
-        return (
-          <EmojiRow
-            title={emoji.title}
-            symbol={emoji.symbol}
-          />
-          
-        );
+      {newEmojies.map((emoji) => {        
+          return (
+            <EmojiRow
+              title={emoji.title}
+              symbol={emoji.symbol}
+            />
+          )
       })}
     </div>
   ) 

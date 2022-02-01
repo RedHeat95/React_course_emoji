@@ -7,6 +7,6 @@ interface IProps {
   // onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({ value,onChange }: IProps) => {
+export const Input = ({ value, onChange }: IProps) => {
   return <input className={styles.input} value={value} onChange={onChange} />;
 };
